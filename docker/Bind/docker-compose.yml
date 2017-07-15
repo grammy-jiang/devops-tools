@@ -1,0 +1,29 @@
+# Create Docker Network
+
+# docker network create \
+#     --driver macvlan \
+#     --subnet 10.0.0.0/8 \
+#     --gateway 10.0.0.1  \
+#     --opt parent enp0s31f6 \
+#     pub_net
+
+version: '3'
+services:
+    bind:
+        container_name: dc-bind
+        environment:
+            ROOT_PASSWORD: xxxx
+        expose:
+            - '53'
+            - '10000'
+        image: sameersbn/bind:latest
+        networks:
+            pub_net:
+                ipv4_address: 10.0.10.0
+        restart: always
+        tty: true
+        volumes:
+            - ./bind-data:/data
+networks:
+    pub_net:
+        external: true

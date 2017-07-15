@@ -1,0 +1,58 @@
+# Create Docker Network
+
+# docker network create \
+#     --driver macvlan \
+#     --subnet 10.0.0.0/8 \
+#     --gateway 10.0.0.1  \
+#     --opt parent enp0s31f6 \
+#     pub_net
+
+version: "3"
+services:
+    mongo:
+        container_name: MongoDB
+        expose:
+            - '27017'
+        image: mongo:latest
+        networks:
+            pub_net:
+                ipv4_address: 10.0.30.250
+        restart: always
+        tty: true
+        volumes:
+            - ./mongo-db:/data/db
+    mongoclient:
+        container_name: dc-mongoclient
+        depends_on:
+            - mongo
+        environment:
+            MONGO_URL: mongodb://mongo
+        expose:
+            - '3000'
+        image: mongoclient/mongoclient:latest
+        links:
+            - mongo
+        networks:
+            pub_net:
+                ipv4_address: 10.0.30.251
+        restart: always
+        tty: true
+        volumes:
+            - ./mongoclient-db:/data/db
+    mongo-express:
+        container_name: MongoDB-express
+        depends_on:
+            - mongo
+        expose:
+            - '8081'
+        image: mongo-express:latest
+        links:
+            - mongo
+        networks:
+            pub_net:
+                ipv4_address: 10.0.30.252
+        restart: always
+        tty: true
+networks:
+    pub_net:
+        external: true
