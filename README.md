@@ -140,7 +140,7 @@ There are two databases used in sentry:
 * redis
 * postgres
 
-# Right Way to run Sentry in docker compose
+#### Right Way to run Sentry in docker compose
 
 There are six steps on the offical website to help to run this sentry container, but it's not the way how to do it in docker-compose, here it is:
 
