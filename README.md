@@ -8,6 +8,22 @@ Running containers by docker-compose.
 
 **If bind is deployed, all of the services worked in containers should be named a domain to easily connect with each other.**
 
+### Domain & IP Address Assignation
+
+Service | Domain Name | IP Address
+------------ | ------------- | -------------
+Bind | bind.xxxx.com<br>webmin.xxxx.com| 10.0.10.0
+Gitlab | gitlab.xxxx.com | 10.0.20.0
+MariaDB | mariadb.xxxx.com | 
+MongoDB | mongodb.xxxx.com<br>mongoclient.xxxx.com<br>mongo-express.xxxx.com | 10.0.30.250<br>10.0.30.251<br>10.0.30.252
+MySQL | mysql.xxxx.com<br>phpmyadmin.xxxx.com | 10.0.30.0<br>10.0.30.1
+Neo4j | neo4j.xxxx.com | 10.0.30.200
+OpenLDAP | openldap.xxxx.com<br>phpldapadmin.xxxx.com | 10.0.10.1<br>10.0.10.2
+PostgreSQL | postgresql.xxxx.com<br>pgweb.xxxx.com | 10.0.3.210<br>10.0.3.211
+Read the Docs | readthedocs.xxxx.com | 10.0.40.0
+Redis | redis.xxxx.com<br>redis-commander.xxxx.com<br>phpredmin.xxxx.com | 10.0.30.100<br>10.0.30.101<br>10.0.30.102
+Sentry | sentry.xxxx.com | 10.0.20.20
+
 ### Bind
 
 #### Images
@@ -67,6 +83,16 @@ MongoDB with mongoclient, mongo-express.
 * mysql: `mysql://10.0.30.0:3306`
 * phpmyadmin: `http://10.0.30.1`
 
+### Neo4j
+
+#### Images
+
+* [neo4j - Docker Store](https://store.docker.com/images/neo4j)
+
+#### Services
+
+* neo4j: `http://10.0.30.200:7474`
+
 ### OpenLDAP
 
 #### Images
@@ -79,17 +105,7 @@ MongoDB with mongoclient, mongo-express.
 * openldap: 
     - `10.0.10.1:389`
     - `10.0.10.1:636`
-* phpldapadmmin: `https://10.0.10.2`
-
-### Neo4j
-
-#### Images
-
-* [neo4j - Docker Store](https://store.docker.com/images/neo4j)
-
-#### Services
-
-* neo4j: `http://10.0.30.200:7474`
+* phpldapadmin: `https://10.0.10.2`
 
 ### PostgreSQL
 
