@@ -10,19 +10,19 @@ Running containers by docker-compose.
 
 ### Domain & IP Address Assignation
 
-Service | Domain Name | IP Address
------------- | ------------- | -------------
-Bind | bind.xxxx.com<br>webmin.xxxx.com| 10.0.10.0
-Gitlab | gitlab.xxxx.com | 10.0.20.0
-MariaDB | mariadb.xxxx.com | 
-MongoDB | mongodb.xxxx.com<br>mongoclient.xxxx.com<br>mongo-express.xxxx.com | 10.0.30.250<br>10.0.30.251<br>10.0.30.252
-MySQL | mysql.xxxx.com<br>phpmyadmin.xxxx.com | 10.0.30.0<br>10.0.30.1
-Neo4j | neo4j.xxxx.com | 10.0.30.200
-OpenLDAP | openldap.xxxx.com<br>phpldapadmin.xxxx.com | 10.0.10.1<br>10.0.10.2
-PostgreSQL | postgresql.xxxx.com<br>pgweb.xxxx.com | 10.0.3.210<br>10.0.3.211
-Read the Docs | readthedocs.xxxx.com | 10.0.40.0
-Redis | redis.xxxx.com<br>redis-commander.xxxx.com<br>phpredmin.xxxx.com | 10.0.30.100<br>10.0.30.101<br>10.0.30.102
-Sentry | sentry.xxxx.com | 10.0.20.20
+Service | Domain Name | IP Address | Label
+------------ | ------------- | ------------- | -------------
+Bind | bind.xxxx.com<br>webmin.xxxx.com| 10.0.10.0 | Admin
+**Gitlab** | **gitlab.xxxx.com** | **10.0.20.0** | **DevOps**
+MariaDB | mariadb.xxxx.com | | Database
+MongoDB | mongodb.xxxx.com<br>mongoclient.xxxx.com<br>mongo-express.xxxx.com | 10.0.30.250<br>10.0.30.251<br>10.0.30.252 | Database
+MySQL | mysql.xxxx.com<br>phpmyadmin.xxxx.com | 10.0.30.0<br>10.0.30.1 | Database
+Neo4j | neo4j.xxxx.com | 10.0.30.200 | Database
+OpenLDAP | openldap.xxxx.com<br>phpldapadmin.xxxx.com | 10.0.10.1<br>10.0.10.2 | Admin
+PostgreSQL | postgresql.xxxx.com<br>pgweb.xxxx.com | 10.0.3.210<br>10.0.3.211 | Database
+**Read the Docs** | **readthedocs.xxxx.com** | **10.0.40.0** | **DevOps**
+Redis | redis.xxxx.com<br>redis-commander.xxxx.com<br>phpredmin.xxxx.com | 10.0.30.100<br>10.0.30.101<br>10.0.30.102 | Database
+**Sentry** | **sentry.xxxx.com** | **10.0.20.20** | **DevOps**
 
 ### Bind
 
