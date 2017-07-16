@@ -6,6 +6,8 @@ Tools about devops of my own.
 
 Running containers by docker-compose.
 
+**If bind is deployed, all of the services worked in containers should be named a domain to easily connect with each other.**
+
 ### Bind
 
 #### Images
@@ -120,11 +122,85 @@ For accumlating this process:
 
 #### Images
 
+* [redis - Docker Store](https://store.docker.com/images/redis)
+* [tenstartups/redis-commander - Docker Store](https://store.docker.com/community/images/tenstartups/redis-commander)
+* [sasanrose/phpredmin - Docker Store](https://store.docker.com/community/images/sasanrose/phpredmin)
+
 #### Services
+
+* redis: `redis://10.0.30.100:6379`
+* redis-commander: `http://10.0.30.101:8081`
+* phpredmin: `http://10.0.30.102`
 
 ### Sentry
 
+Put Sentry into Docker is a little tricky.
+
+There are two databases used in sentry:
+* redis
+* postgres
+
+# Right Way to run Sentry in docker compose
+
+There are six steps on the offical website to help to run this sentry container, but it's not the way how to do it in docker-compose, here it is:
+
+First of all, create all fundamental services:
+
+```shell
+grammy-jiang@ubuntu:~$ docker run \
+> -d \
+> --name sentry-redis \
+> -v /home/grammy-jiang/PycharmProjects/docker/docker-sentry/redis-data:/data
+> redis
+```
+
+```shell
+grammy-jiang@ubuntu:~$ docker run \
+> -d \
+> --name sentry-postgres \
+> -e POSTGRES_PASSWORD=secret \
+> -e POSTGRES_USER=sentry \
+> -v /home/grammy-jiang/PycharmProjects/docker/docker-sentry/postgres-data:/var/lib/postgresql/data
+> postgres
+```
+
+Then generate the secret key:
+
+```shell
+grammy-jiang@ubuntu:~$ docker run \
+> --rm \
+> sentry \
+> config generate-secret-key
+b2k(q_2-^g*hi!6c*q%@ujf2=o#=adu*3t73th39k0s!(jfw+k
+```
+
+This secret key will be used in all services in docker compose, write it down!
+
+Then 
+
+```shell
+grammy-jiang@ubuntu:~$ docker run \
+> -it \
+> --rm \
+> -e SENTRY_SECRET_KEY='b2k(q_2-^g*hi!6c*q%@ujf2=o#=adu*3t73th39k0s!(jfw+k' \
+> --link sentry-postgres:postgres \
+> --link sentry-redis:redis \
+> -v /home/grammy-jiang/PycharmProjects/docker/docker-sentry/sentry-files:/var/lib/sentry/files \
+> -v /home/grammy-jiang/PycharmProjects/docker/docker-sentry/sentry-sentry:/etc/sentry \
+> sentry \
+> upgrade
+```
+
+After these, stop and remove all containers, up docker-compose.yml, done!
+
 #### Images
+
+* [Sentry - Docker Store](https://store.docker.com/images/sentry)
 
 #### Services
 
+* sentry: `http://10.0.20.20:9000`
+
+#### References
+
+* [Track errors with modern exception logging for JavaScript, Python, Ruby, Java, and Node.js](https://sentry.io/welcome/)
