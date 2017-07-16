@@ -1,0 +1,9 @@
+[user]
+    name = grammy-jiang
+    email = grammy-jiang@gmail.com
+[http]
+    PROXY = HTTP://127.0.0.1:57777
+[HTTPS]
+    PROXY = HTTP://127.0.0.1:57777
+[PUSH]
+    DEFAULT = SIMPLE

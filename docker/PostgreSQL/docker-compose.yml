@@ -1,0 +1,44 @@
+# Create Docker Network
+
+# docker network create \
+#     --driver macvlan \
+#     --subnet 10.0.0.0/8 \
+#     --gateway 10.0.0.1  \
+#     --opt parent enp0s31f6 \
+#     pub_net
+
+version: '3'
+services:
+    postgres:
+        container_name: dc-postgres
+        expose:
+            - '5432'
+        environment:
+            POSTGRES_PASSWORD: xxxx
+        image: postgres:latest
+        networks:
+            pub_net:
+                ipv4_address: 10.0.30.210
+        restart: always
+        tty: true
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+    pgweb:
+        container_name: dc-pgweb
+        depends_on:
+            - postgres
+        environment:
+            DATABASE_URL: postgres://postgres:xxxx@postgres:5432/postgres?sslmode=disable
+        image: sosedoff/pgweb:latest
+        expose:
+            - '8081'
+        links:
+            - postgres
+        networks:
+            pub_net:
+                ipv4_address: 10.0.30.211
+        restart: always
+        tty: true
+networks:
+    pub_net:
+        external: true

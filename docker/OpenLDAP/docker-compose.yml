@@ -1,0 +1,57 @@
+# Create Docker Network
+
+# docker network create \
+#     --driver macvlan \
+#     --subnet 10.0.0.0/8 \
+#     --gateway 10.0.0.1  \
+#     --opt parent enp0s31f6 \
+#     pub_net
+
+version: '3'
+services:
+    openldap:
+        container_name: dc-openldap
+        environment:
+            # account: cn=admin,dc=xxxx,dc=cn
+            # password: xxxx
+            LDAP_ADMIN_PASSWORD: 'xxxx'
+            LDAP_DOMAIN: 'xxxx.cn'
+            LDAP_ORGANISATION: 'xxxx'
+        expose:
+            - '389'
+            - '636'
+        hostname: ldap.xxxx.cn
+        image: osixia/openldap:latest
+        networks:
+            pub_net:
+                ipv4_address: 10.0.10.1
+        restart: always
+        stdin_open: true
+        tty: true
+        volumes:
+            - './openldap-certs:/container/service/slapd/assets/certs'
+            - './openldap-ldap:/var/lib/ldap'
+            - './openldap-slapd.d:/etc/ldap/slapd.d'
+    phpldapadmin:
+        container_name: dc-phpldapadmin
+        depends_on:
+            - openldap
+        environment:
+            PHPLDAPADMIN_LDAP_HOSTS: openldap
+        expose:
+            - '80'
+            - '443'
+        hostname: phpldapadmin.xxxx.cn
+        image: osixia/phpldapadmin:latest
+        links:
+            - openldap
+        networks:
+            pub_net:
+                ipv4_address: 10.0.10.2
+        restart: always
+        tty: true
+        volumes:
+            - './phpldapadmin-certs:/container/service/phpldapadmin/assets/apache2/certs'
+networks:
+    pub_net:
+        external: true

@@ -1,0 +1,24 @@
+# Create Docker Network
+
+# docker network create \
+#     --driver macvlan \
+#     --subnet 10.0.0.0/8 \
+#     --gateway 10.0.0.1  \
+#     --opt parent enp0s31f6 \
+#     pub_net
+
+version: '3'
+services:
+    readthedocs:
+        container_name: dc-readthedocs
+        expose:
+            - '80'
+        image: readthedocs:latest
+        networks:
+            pub_net:
+                ipv4_address: 10.0.40.0
+        restart: always
+        tty: true
+networks:
+    pub_net:
+        external: true
