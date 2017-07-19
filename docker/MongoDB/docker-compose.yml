@@ -7,10 +7,13 @@
 #     --opt parent enp0s31f6 \
 #     pub_net
 
-version: "3"
+version: '3'
 services:
     mongo:
-        container_name: MongoDB
+        container_name: dc-mongo
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: xxxxxxxx
         expose:
             - '27017'
         image: mongo:latest
@@ -26,7 +29,7 @@ services:
         depends_on:
             - mongo
         environment:
-            MONGO_URL: mongodb://mongo
+            MONGO_URL: mongodb://root:xxxxxxxx@mongo
         expose:
             - '3000'
         image: mongoclient/mongoclient:latest

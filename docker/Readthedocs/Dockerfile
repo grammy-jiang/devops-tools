@@ -8,9 +8,8 @@ COPY ./sources.list /etc/apt/
 COPY ./gitconfig /root/.gitconfig
 
 # change pip source to douban
-RUN mkdir /root/.pip/ \
- && echo '[global]' >> /root/.pip/pip.conf \
- && echo 'index-url = https://pypi.douban.com/simple' >> /root/.pip/pip.conf
+RUN echo '[global]' >> /etc/pip.conf \
+ && echo 'index-url = https://pypi.douban.com/simple' >> /etc/pip.conf
 
 RUN apt-get update \
  && apt-get install -y \
