@@ -1,0 +1,84 @@
+# OS: UBUNTU SERVER 16.04 LTS
+# https://wiki.ubuntu.com/XenialXerus/ReleaseNotes
+
+---
+- hosts: vps
+  tasks:
+
+  # ---------------------------------------------------------------------------
+  # INITIALIZE
+  # ---------------------------------------------------------------------------
+
+  - name: apt update && upgrade
+    apt:
+      update_cache: yes
+      upgrade: dist
+  - name: install git
+    apt:
+      name: git
+  - name: install pip
+    apt:
+      name: python3-pip
+  - name: install latest pip
+    pip:
+      editable: false
+      name: pip
+      extra_args: --upgrade
+  - name: install latest setuptools
+    pip:
+      editable: false
+      name: setuptools
+      extra_args: --upgrade
+
+  # ---------------------------------------------------------------------------
+  # INSTALL DOCKER
+  # ---------------------------------------------------------------------------
+
+  - name: download get-docker.sh
+    get_url:
+      url: https://get.docker.com
+      dest: /tmp/get-docker.sh
+
+  - name: add execution to this bash
+    file:
+      path: /tmp/get-docker.sh
+      mode: 755
+
+  - name: execute get-docker.sh
+    shell: /tmp/get-docker.sh
+
+  - name: remove get-docker.sh
+    file:
+      path: /tmp/get-docker.sh
+      state: absent
+
+  # ---------------------------------------------------------------------------
+  # INSTALL DOCKER COMPOSE
+  # ---------------------------------------------------------------------------
+
+  - name: download docker-compose
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.15.0/docker-compose-Linux-x86_64
+      dest: /usr/local/bin/docker-compose
+      mode: 755
+
+  - name: docker-compose autocomplete
+    get_url:
+      url: https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose
+      dest: /etc/bash_completion.d/docker-compose
+
+  # ---------------------------------------------------------------------------
+  # INSTALL DOCKER PYTHON API
+  # ---------------------------------------------------------------------------
+
+  - name: clean docker-py
+    pip:
+      editable: false
+      name: docker-py
+      state: absent
+
+  - name: install docker python api
+    pip:
+      editable: false
+      name: docker
+      extra_args: --upgrade
