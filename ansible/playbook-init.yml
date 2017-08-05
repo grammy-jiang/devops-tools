@@ -55,6 +55,7 @@
       src: ~/projects/blade-vim/vimrc
       dest: ~/.vimrc
       state: link
+      
   - name: git clone blade-tmux
     git:
       repo: https://github.com/grammy-jiang/blade-tmux.git
