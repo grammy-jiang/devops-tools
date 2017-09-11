@@ -1,0 +1,19 @@
+#!/bin/bash
+# This hook is sourced after a new virtualenv is activated.
+pip install ipython
+pip install jupyter
+
+pip install numpy
+pip install pandas
+
+pip install sympy
+pip install nose
+
+pip install scipy
+pip install scikit-image
+pip install scikit-learn
+
+pip install matplotlib
+
+pip install cython
+pip install fn
