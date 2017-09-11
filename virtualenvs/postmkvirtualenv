@@ -16,4 +16,10 @@ pip install scikit-learn
 pip install matplotlib
 
 pip install cython
+pip install docker
 pip install fn
+pip install jedi
+pip install pymongo
+pip install raven
+pip install sanic
+pip install uvloop
