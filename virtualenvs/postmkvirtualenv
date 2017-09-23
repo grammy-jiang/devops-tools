@@ -17,9 +17,17 @@ pip install matplotlib
 
 pip install cython
 pip install docker
-pip install fn
 pip install jedi
 pip install pymongo
 pip install raven
 pip install sanic
 pip install uvloop
+
+pip install fn
+pip install toolz
+pip install cytoolz
+pip install multipledispatch
+pip install pyrsistent
+
+pip install celery
+pip install mitmproxy
