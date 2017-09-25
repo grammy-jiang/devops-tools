@@ -31,3 +31,4 @@ pip install pyrsistent
 
 pip install celery
 pip install mitmproxy
+pip install versioneer
