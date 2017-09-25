@@ -1,5 +1,7 @@
 #!/bin/bash
 # This hook is sourced after a new virtualenv is activated.
+
+# data science
 pip install ipython
 pip install jupyter
 
@@ -15,20 +17,32 @@ pip install scikit-learn
 
 pip install matplotlib
 
+# c extensions
 pip install cython
-pip install docker
-pip install jedi
-pip install pymongo
-pip install raven
-pip install sanic
-pip install uvloop
 
+# functional programming
 pip install fn
 pip install toolz
 pip install cytoolz
 pip install multipledispatch
 pip install pyrsistent
 
-pip install celery
-pip install mitmproxy
+# devops
+pip install docker
+pip install raven
 pip install versioneer
+
+# database
+pip install pymongo
+pip install redis
+
+# web development
+pip install uvloop
+pip install sanic
+
+# mq
+pip install celery
+
+# misc.
+pip install mitmproxy
+pip install jedi
