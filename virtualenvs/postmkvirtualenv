@@ -46,3 +46,4 @@ pip install celery
 # misc.
 pip install mitmproxy
 pip install jedi
+pip install cookiecutter
