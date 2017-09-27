@@ -42,6 +42,7 @@ pip install sanic
 
 # mq
 pip install celery
+pip install flower
 
 # misc.
 pip install mitmproxy
