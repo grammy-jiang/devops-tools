@@ -28,6 +28,7 @@ pip install multipledispatch
 pip install pyrsistent
 
 # devops
+pip install ansible
 pip install docker
 pip install raven
 pip install versioneer
