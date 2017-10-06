@@ -29,8 +29,10 @@ pip install pyrsistent
 
 # devops
 pip install ansible
+pip install cookiecutter
 pip install docker
 pip install raven
+pip install tox
 pip install versioneer
 
 # database
@@ -38,8 +40,11 @@ pip install pymongo
 pip install redis
 
 # web development
-pip install uvloop
+pip install jinja2
+pip install lxml
 pip install sanic
+pip install twisted
+pip install uvloop
 
 # mq
 pip install celery
@@ -48,4 +53,3 @@ pip install flower
 # misc.
 pip install mitmproxy
 pip install jedi
-pip install cookiecutter
