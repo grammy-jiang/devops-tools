@@ -37,6 +37,7 @@ pip install tox
 pip install versioneer
 
 # database
+pip install happybase
 pip install pymongo
 pip install redis
 
@@ -50,6 +51,7 @@ pip install uvloop
 # mq
 pip install celery
 pip install flower
+pip install kafka-python
 
 # misc.
 pip install mitmproxy
