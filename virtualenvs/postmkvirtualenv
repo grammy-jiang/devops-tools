@@ -28,6 +28,7 @@ pip install multipledispatch
 pip install pyrsistent
 
 # devops
+pip install thefuck
 pip install ansible
 pip install cookiecutter
 pip install docker
@@ -53,3 +54,4 @@ pip install flower
 # misc.
 pip install mitmproxy
 pip install jedi
+pip install scrapy
