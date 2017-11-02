@@ -53,10 +53,12 @@ pip install celery
 pip install flower
 pip install kafka-python
 
-# misc.
-pip install mitmproxy
-pip install jedi
-
 # web crawler
 pip install frontera
 pip install scrapy
+
+# misc.
+pip install mitmproxy
+pip install jedi
+pip install sphinx
+
