@@ -35,11 +35,17 @@
       editable: false
       name: setuptools
       extra_args: --upgrade
-      
+  - name: install python-dev
+    apt:
+      name: python-dev
+  - name: install python3-dev
+    apt:
+      name: python3-dev
+
   # ---------------------------------------------------------------------------
   # VIM & TMUX CUSTOMIZATION
   # ---------------------------------------------------------------------------
-  
+
   - name: git clone blade-vim
     git:
       repo: https://github.com/grammy-jiang/blade-vim.git
@@ -55,7 +61,32 @@
       src: ~/projects/blade-vim/vimrc
       dest: ~/.vimrc
       state: link
-      
+
+  - name: clone fonts for vim-airline
+    git:
+      repo: https://github.com/powerline/fonts.git
+      dest: ~
+      clone: yes
+  - name: install fonts for vim-airline
+    shell: install.sh
+      chdir: ~/fonts
+
+  - name: install prerequsite build-essential
+    apt:
+      name: build-essential
+  - name: install prerequsite cmake
+    apt:
+      name: cmake
+  - name: install prerequsite jedi
+    pip:
+      name: jedi
+  - name: install prerequsite autopep8
+    pip:
+      name: autopep8
+
+  - name: install plugins
+    shell: vim +PluginInstall +qall
+
   - name: git clone blade-tmux
     git:
       repo: https://github.com/grammy-jiang/blade-tmux.git
@@ -71,7 +102,7 @@
       src: ~/projects/blade-tmux/tmux.conf
       dest: ~/.tmux.conf
       state: link
-      
+
   # ---------------------------------------------------------------------------
   # INSTALL DOCKER
   # ---------------------------------------------------------------------------
@@ -100,7 +131,7 @@
 
   - name: download docker-compose
     get_url:
-      url: https://github.com/docker/compose/releases/download/1.15.0/docker-compose-Linux-x86_64
+      url: https://github.com/docker/compose/releases/download/1.16.1/docker-compose-Linux-x86_64
       dest: /usr/local/bin/docker-compose
       mode: 755
 
