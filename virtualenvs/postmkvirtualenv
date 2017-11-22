@@ -30,6 +30,7 @@ pip install pyrsistent
 # devops
 pip install ansible
 pip install cookiecutter
+pip install colorlog
 pip install docker
 pip install raven
 pip install thefuck
@@ -38,8 +39,10 @@ pip install versioneer
 
 # database
 pip install happybase
+pip install mysql-connector-python-rf
 pip install pymongo
 pip install redis
+pip install sqlalchemy
 
 # web development
 pip install jinja2
