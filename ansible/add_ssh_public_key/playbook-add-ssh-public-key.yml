@@ -1,0 +1,14 @@
+# Playbooks — Ansible Documentationw
+# http://docs.ansible.com/ansible/latest/playbooks.html
+
+---
+- hosts: vps_provider
+  tasks:
+
+  - name: Set up multiple authorized keys
+    authorized_key:
+      user: root
+      state: present
+      key: '{{ item }}'
+    with_file:
+      - ./id_rsa.pub
