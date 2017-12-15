@@ -6,6 +6,7 @@ pip install ipython
 pip install jupyter
 
 pip install numpy
+pip install cupy
 pip install pandas
 
 pip install sympy
@@ -16,6 +17,13 @@ pip install scikit-image
 pip install scikit-learn
 
 pip install matplotlib
+
+pip install tensorflow
+
+# NLP
+pip install nltk
+pip install spacy
+pip install thinc
 
 # c extensions
 pip install cython
@@ -36,6 +44,14 @@ pip install raven
 pip install thefuck
 pip install tox
 pip install versioneer
+
+# cloud
+# https://boto3.readthedocs.io/en/latest/index.html
+pip install boto3 # amazon
+# https://developers.google.com/api-client-library/python/
+pip install google-api-python-client # google
+# https://developers.linode.com/v4/libraries/python
+pip install linode-api
 
 # database
 pip install happybase
