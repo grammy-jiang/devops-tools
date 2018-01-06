@@ -1,0 +1,11 @@
+version:
+services:
+  rancher:
+    container_name: dc-rancher
+    image: rancher/server:stable
+    ports:
+      - '8080:8080'
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql-data:/var/lib/mysql

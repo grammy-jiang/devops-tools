@@ -4,6 +4,9 @@
 # data science
 pip install ipython
 pip install jupyter
+pip install ipykernel
+# http://help.pythonanywhere.com/pages/IPythonNotebookVirtualenvs
+# python -m ipykernel install --user --name={{virtualenv name}}
 
 pip install numpy
 pip install cupy
@@ -19,6 +22,7 @@ pip install scikit-learn
 pip install matplotlib
 
 pip install tensorflow
+pip install tangent
 
 # NLP
 pip install nltk
@@ -40,7 +44,9 @@ pip install ansible
 pip install cookiecutter
 pip install colorlog
 pip install docker
+pip install molecule
 pip install raven
+pip install testinfra
 pip install thefuck
 pip install tox
 pip install versioneer
@@ -75,9 +81,10 @@ pip install kafka-python
 # web crawler
 pip install frontera
 pip install scrapy
+pip install requests
+pip install hyper
 
 # misc.
 pip install mitmproxy
 pip install jedi
 pip install sphinx
-
