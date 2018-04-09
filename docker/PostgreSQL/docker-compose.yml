@@ -15,7 +15,7 @@ services:
             - '5432'
         environment:
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest
+        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
         networks:
             pub_net:
                 ipv4_address: 10.0.30.210
@@ -29,7 +29,7 @@ services:
             - postgres
         environment:
             DATABASE_URL: postgres://postgres:xxxx@postgres:5432/postgres?sslmode=disable
-        image: sosedoff/pgweb:latest
+        image: sosedoff/pgweb:latest@sha256:76fde0fb3d9fcfc260680a7c9818a1af32431de0d079644584716e7dfdf45578
         expose:
             - '8081'
         links:

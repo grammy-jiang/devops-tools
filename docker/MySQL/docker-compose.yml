@@ -15,7 +15,7 @@ services:
             MYSQL_ROOT_PASSWORD: xxxx
         expose:
             - "3306"
-        image: mysql:latest
+        image: mysql:latest@sha256:691c55aabb3c4e3b89b953dd2f022f7ea845e5443954767d321d5f5fa394e28c
         networks:
             pub_net:
                 ipv4_address: 10.0.30.0
@@ -32,7 +32,7 @@ services:
             PMA_HOST: mysql
         expose:
             - "80"
-        image: phpmyadmin/phpmyadmin:latest
+        image: phpmyadmin/phpmyadmin:latest@sha256:8132f8ba07eda5af071270356efd70abd5a26ed396833417afb2294e3912ddcf
         links:
             - mysql
         networks:

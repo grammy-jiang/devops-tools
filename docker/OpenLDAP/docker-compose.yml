@@ -21,7 +21,7 @@ services:
             - '389'
             - '636'
         hostname: ldap.xxxx.cn
-        image: osixia/openldap:latest
+        image: osixia/openldap:latest@sha256:bb6485f1bf63d5b52318d11dcf2285d83285c893eb06a2bbe36460ccb28eb4c8
         networks:
             pub_net:
                 ipv4_address: 10.0.10.1
@@ -42,7 +42,7 @@ services:
             - '80'
             - '443'
         hostname: phpldapadmin.xxxx.cn
-        image: osixia/phpldapadmin:latest
+        image: osixia/phpldapadmin:latest@sha256:1ab629698ae0abff6e00d23feb978d5345abf656205cb5da3795daedec8cad9e
         links:
             - openldap
         networks:
