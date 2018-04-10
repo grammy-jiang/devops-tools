@@ -13,7 +13,7 @@ services:
         container_name: dc-redis
         expose:
             - "6379"
-        image: redis:latest
+        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
         networks:
             pub_net:
                 ipv4_address: 10.0.30.100
@@ -28,7 +28,7 @@ services:
             - redis
         expose:
             - "8081"
-        image: tenstartups/redis-commander:latest
+        image: tenstartups/redis-commander:latest@sha256:21bf41b32c060e9c7eed270066aadee0a26791359263bebffd20879a291103fa
         links:
             - redis
         networks:
@@ -46,7 +46,7 @@ services:
             - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
         expose:
             - "80"
-        image: sasanrose/phpredmin:latest
+        image: sasanrose/phpredmin:latest@sha256:81949e4300a718ab7407d75057c2d0020beb8ac0e24b8e24d71bc47f989d518a
         links:
             - redis
         networks:

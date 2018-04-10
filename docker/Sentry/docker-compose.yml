@@ -23,7 +23,7 @@ services:
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
         expose:
             - '9000'
-        image: sentry:latest
+        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
         links:
             - redis
             - postgres
@@ -48,7 +48,7 @@ services:
             SENTRY_DB_USER: sentry
             SENTRY_REDIS_HOST: redis
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
-        image: sentry:latest
+        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
         links:
             - redis
             - postgres
@@ -72,7 +72,7 @@ services:
             SENTRY_DB_USER: sentry
             SENTRY_REDIS_HOST: redis
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
-        image: sentry:latest
+        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
         links:
             - redis
             - postgres
@@ -87,7 +87,7 @@ services:
         container_name: dc-sentry-redis
         expose:
             - '6379'
-        image: redis:latest
+        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
         networks:
             pub_net:
                 ipv4_address: 10.0.20.21
@@ -102,7 +102,7 @@ services:
         environment:
             POSTGRES_USER: sentry
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest
+        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
         networks:
             pub_net:
                 ipv4_address: 10.0.20.22
