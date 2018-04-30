@@ -16,7 +16,7 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: xxxxxxxx
         expose:
             - '27017'
-        image: mongo:latest@sha256:d969194a7c4dcd817cae5dc726b1493547a3ad3f1b30f7f58857adc9ae6a4483
+        image: mongo:latest@sha256:c6d2b2f8c054210db26b492bab81ffab171ee54eb58925fa98fabb4faca3a9cb
         networks:
             pub_net:
                 ipv4_address: 10.0.30.250
