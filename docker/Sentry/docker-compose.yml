@@ -23,7 +23,7 @@ services:
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
         expose:
             - '9000'
-        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
+        image: sentry:latest@sha256:36694114e623bf2019dde3b527003d94c7691fc8fe98e2d6dda11ab7c923219a
         links:
             - redis
             - postgres
@@ -48,7 +48,7 @@ services:
             SENTRY_DB_USER: sentry
             SENTRY_REDIS_HOST: redis
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
-        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
+        image: sentry:latest@sha256:36694114e623bf2019dde3b527003d94c7691fc8fe98e2d6dda11ab7c923219a
         links:
             - redis
             - postgres
@@ -72,7 +72,7 @@ services:
             SENTRY_DB_USER: sentry
             SENTRY_REDIS_HOST: redis
             SENTRY_SECRET_KEY: 'eg62num()1edt%jr5ym00l!7p1qt0a^k^qatv@zds(&22qk&&o'
-        image: sentry:latest@sha256:07bcbe90687cbe2ee49a3f62a70faecc5dd62c2b8651720bed7868900ae2128c
+        image: sentry:latest@sha256:36694114e623bf2019dde3b527003d94c7691fc8fe98e2d6dda11ab7c923219a
         links:
             - redis
             - postgres
