@@ -21,7 +21,7 @@ services:
             - '389'
             - '636'
         hostname: ldap.xxxx.cn
-        image: osixia/openldap:latest@sha256:bb6485f1bf63d5b52318d11dcf2285d83285c893eb06a2bbe36460ccb28eb4c8
+        image: osixia/openldap:latest@sha256:6ceb347feb37d421fcabd80f73e3dc6578022d59220cab717172ea69c38582ec
         networks:
             pub_net:
                 ipv4_address: 10.0.10.1
