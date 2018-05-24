@@ -32,7 +32,7 @@ services:
             MONGO_URL: mongodb://root:xxxxxxxx@mongo
         expose:
             - '3000'
-        image: mongoclient/mongoclient:latest@sha256:40afc9d75ca855785ae0fde68e7be0ecb44a9ce7f24cdbeaf37d647170225837
+        image: mongoclient/mongoclient:latest@sha256:b804258a2730e3a5512577c8b165c8f58aecd4dfea2a72d68c6c12e51a8a56bc
         links:
             - mongo
         networks:
