@@ -20,6 +20,8 @@ services:
         container_name: dc-mongoclient
         depends_on:
             - mongo
+        environment:
+            MONGO_URL: mongodb://root:xxxxxxxx@mongo:27017/admin
         image: mongoclient/mongoclient:latest
         links:
             - mongo
