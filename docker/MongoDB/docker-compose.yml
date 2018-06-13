@@ -48,7 +48,7 @@ services:
             - mongo
         expose:
             - '8081'
-        image: mongo-express:latest@sha256:6ef3fa1d9b9cb5ff186e1230a8ba2e4882391e6fdf83e50d39f94ab74a4ba935
+        image: mongo-express:latest@sha256:81c9310ac1e5e8cf34229c109547e0cf24d98ab8aabca48dfe98871c1562164e
         links:
             - mongo
         networks:
