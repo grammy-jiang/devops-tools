@@ -6,7 +6,7 @@ services:
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: xxxxxxxx
-        image: mongo:latest
+        image: mongo:latest@sha256:3a09cd85fb4e76f1d5832f9ea1d4e7481f76e807389b7d8ea6ac4d4ba96f83e5
         networks:
             - mongo
         ports:
@@ -22,7 +22,7 @@ services:
             - mongo
         environment:
             MONGO_URL: mongodb://root:xxxxxxxx@mongo:27017/admin
-        image: mongoclient/mongoclient:latest
+        image: mongoclient/mongoclient:latest@sha256:c7dd001df7244d741e20f9cac48664d17dc58b963ece48811c0d25661f205be2
         links:
             - mongo
         networks:
@@ -43,7 +43,7 @@ services:
             ME_CONFIG_MONGODB_ADMINPASSWORD: xxxxxxxx
             ME_CONFIG_MONGODB_PORT: 27017
             ME_CONFIG_MONGODB_SERVER: mongo
-        image: mongo-express:latest
+        image: mongo-express:latest@sha256:f225ec6052b09c11a74746f71e15d6066d40db0344bff15b9f3480f797f8c23f
         links:
             - mongo
         networks:
