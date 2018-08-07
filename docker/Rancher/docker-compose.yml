@@ -2,7 +2,7 @@ version:
 services:
   rancher:
     container_name: dc-rancher
-    image: rancher/server:stable@sha256:4119159ed0f5a53c79af5d0eaa4c7de31c42bd411eac4756f8e2ce56fb37b43a
+    image: rancher/server:stable@sha256:b06394281b22a84c439d82095c88d2ae0e68694791c257780e207bb0fbfb15ad
     ports:
       - '8080:8080'
     restart: always
