@@ -16,7 +16,7 @@ services:
         expose:
             - '53'
             - '10000'
-        image: sameersbn/bind:latest@sha256:ecc1925a5c7c3b48bdb9c72ff5f4f86de9a8dca0aa6d8610425129cd1b039ed5
+        image: sameersbn/bind:latest@sha256:05d6f4e230d0afb05504591a2139b2b92af416456df75e4773b9ffdf6ce99013
         networks:
             pub_net:
                 ipv4_address: 10.0.10.0
