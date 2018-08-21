@@ -1,22 +1,12 @@
-# Create Docker Network
-
-# docker network create \
-#     --driver macvlan \
-#     --subnet 10.0.0.0/8 \
-#     --gateway 10.0.0.1  \
-#     --opt parent enp0s31f6 \
-#     pub_net
-
 version: "3"
 services:
     redis:
         container_name: dc-redis
-        expose:
-            - "6379"
-        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
+        image: redis:latest
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.100
+            - redis
+        ports:
+            - 6379:6379
         restart: always
         tty: true
         volumes:
@@ -26,14 +16,13 @@ services:
         container_name: dc-redis-commander
         depends_on:
             - redis
-        expose:
-            - "8081"
-        image: tenstartups/redis-commander:latest@sha256:21bf41b32c060e9c7eed270066aadee0a26791359263bebffd20879a291103fa
+        image: tenstartups/redis-commander:latest
         links:
             - redis
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.101
+            - redis
+        ports:
+            - 8082:8081
         restart: always
         tty: true
     phpredmin:
@@ -44,16 +33,16 @@ services:
             - redis
         environment:
             - PHPREDMIN_DATABASE_REDIS_0_HOST=redis
-        expose:
-            - "80"
-        image: sasanrose/phpredmin:latest@sha256:81949e4300a718ab7407d75057c2d0020beb8ac0e24b8e24d71bc47f989d518a
+        image: sasanrose/phpredmin:latest
         links:
             - redis
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.102
+            - redis
+        ports:
+            - 8083:80
         restart: always
         tty: true
+
 networks:
-    pub_net:
-        external: true
+    redis:
+        driver: bridge
