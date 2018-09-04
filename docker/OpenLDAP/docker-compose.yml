@@ -42,7 +42,7 @@ services:
             - '80'
             - '443'
         hostname: phpldapadmin.xxxx.cn
-        image: osixia/phpldapadmin:latest@sha256:1ab629698ae0abff6e00d23feb978d5345abf656205cb5da3795daedec8cad9e
+        image: osixia/phpldapadmin:latest@sha256:2046444fb5467967d856769179738a1b4d3013450c48983d3502f438a043e3d8
         links:
             - openldap
         networks:
