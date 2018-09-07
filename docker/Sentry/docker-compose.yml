@@ -87,7 +87,7 @@ services:
         container_name: dc-sentry-redis
         expose:
             - '6379'
-        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
+        image: redis:latest@sha256:b77926b30ca2f126431e4c2055efcf2891ebd4b4c4a86a53cf85ec3d4c98a4c9
         networks:
             pub_net:
                 ipv4_address: 10.0.20.21
