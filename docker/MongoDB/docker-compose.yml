@@ -11,7 +11,7 @@ services:
             - mongo
         ports:
             - 27017:27017
-        restart: on-failure
+        restart: always
         tty: true
         volumes:
             - ./mongo-db:/data/db
@@ -29,7 +29,7 @@ services:
             - mongo
         ports:
             - 3000:3000
-        restart: on-failure
+        restart: always
         tty: true
         volumes:
             - ./mongoclient-db:/data/db
@@ -50,7 +50,7 @@ services:
             - mongo
         ports:
             - 8081:8081
-        restart: on-failure
+        restart: always
         tty: true
 
 networks:
