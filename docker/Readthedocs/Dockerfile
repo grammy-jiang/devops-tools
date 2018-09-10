@@ -1,4 +1,4 @@
-FROM ubuntu:16.04@sha256:9ee3b83bcaa383e5e3b657f042f4034c92cdd50c03f73166c145c9ceaea9ba7c
+FROM ubuntu:16.04@sha256:45ddfa61744947b0b8f7f20b8de70cbcdd441a6a0532f791fd4c09f5e491a8eb
 LABEL maintainer "grammy.jiang@gmail.com"
 
 # change apt source to the one in china
