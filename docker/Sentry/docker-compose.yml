@@ -102,7 +102,7 @@ services:
         environment:
             POSTGRES_USER: sentry
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
+        image: postgres:latest@sha256:1d26fae6c056760ed5aa5bb5d65d155848f48046ae8cd95c5b26ea7ceabb37ad
         networks:
             pub_net:
                 ipv4_address: 10.0.20.22
