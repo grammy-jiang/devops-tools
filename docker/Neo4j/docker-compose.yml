@@ -14,7 +14,7 @@ services:
         expose:
             - "7474"
             - "7687"
-        image: neo4j:latest@sha256:7a97d0b11331d793e0d49e12cb847eded3db9044c856d80fa70daab5fd221c2f
+        image: neo4j:latest@sha256:8f262ce6bddd0aaa1b51d60f32703e73c39a1ac4c05e78f894dbc9c2aef3ad19
         networks:
             pub_net:
                 ipv4_address: 10.0.30.200
