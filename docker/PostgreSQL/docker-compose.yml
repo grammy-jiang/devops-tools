@@ -29,7 +29,7 @@ services:
             - postgres
         environment:
             DATABASE_URL: postgres://postgres:xxxx@postgres:5432/postgres?sslmode=disable
-        image: sosedoff/pgweb:latest@sha256:76fde0fb3d9fcfc260680a7c9818a1af32431de0d079644584716e7dfdf45578
+        image: sosedoff/pgweb:latest@sha256:b88ee27cfd0b155e07ec346eeb9d506a8cc877b1abc5922a9c94487b101c955d
         expose:
             - '8081'
         links:
