@@ -15,7 +15,7 @@ services:
             MYSQL_ROOT_PASSWORD: xxxx
         expose:
             - "3306"
-        image: mysql:latest@sha256:691c55aabb3c4e3b89b953dd2f022f7ea845e5443954767d321d5f5fa394e28c
+        image: mysql:latest@sha256:b7f7479f0a2e7a3f4ce008329572f3497075dc000d8b89bac3134b0fb0288de8
         networks:
             pub_net:
                 ipv4_address: 10.0.30.0
