@@ -1,44 +1,37 @@
-# Create Docker Network
-
-# docker network create \
-#     --driver macvlan \
-#     --subnet 10.0.0.0/8 \
-#     --gateway 10.0.0.1  \
-#     --opt parent enp0s31f6 \
-#     pub_net
-
 version: '3'
 services:
     postgres:
         container_name: dc-postgres
-        expose:
-            - '5432'
         environment:
+            POSTGRES_USER: user
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
+            POSTGRES_DB: user_db
+        image: postgres:latest
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.210
+            - postgres
+        ports:
+            - 5432:5432
         restart: always
         tty: true
         volumes:
             - ./postgres-data:/var/lib/postgresql/data
-    pgweb:
-        container_name: dc-pgweb
+    pgadmin4:
+        container_name: dc-pgadmin4
         depends_on:
             - postgres
         environment:
-            DATABASE_URL: postgres://postgres:xxxx@postgres:5432/postgres?sslmode=disable
-        image: sosedoff/pgweb:latest@sha256:76fde0fb3d9fcfc260680a7c9818a1af32431de0d079644584716e7dfdf45578
-        expose:
-            - '8081'
+            PGADMIN_DEFAULT_EMAIL: grammy.jiang@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: xxxx
+        image: dpage/pgadmin4:latest
         links:
             - postgres
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.211
+            - postgres
+        ports:
+            - 80:80
         restart: always
         tty: true
 networks:
-    pub_net:
-        external: true
+    postgres:
+        driver: bridge
+

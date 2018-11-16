@@ -1,24 +1,14 @@
-# Create Docker Network
-
-# docker network create \
-#     --driver macvlan \
-#     --subnet 10.0.0.0/8 \
-#     --gateway 10.0.0.1  \
-#     --opt parent enp0s31f6 \
-#     pub_net
-
 version: "3"
 services:
     mysql:
         container_name: dc-mysql
         environment:
             MYSQL_ROOT_PASSWORD: xxxx
-        expose:
-            - "3306"
-        image: mysql:latest@sha256:691c55aabb3c4e3b89b953dd2f022f7ea845e5443954767d321d5f5fa394e28c
+        image: mysql:5.6
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.0
+            - mysql
+        ports:
+            - 3306:3306
         restart: always
         tty: true
         volumes:
@@ -30,18 +20,17 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: xxxx
             PMA_HOST: mysql
-        expose:
-            - "80"
-        image: phpmyadmin/phpmyadmin:latest@sha256:0d3eaec30b333ba90ff89eb529521236454714064a41ca80f23f9a37f9d75e60
+        image: phpmyadmin/phpmyadmin:latest
         links:
             - mysql
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.1
+            - mysql
+        ports:
+            - 80:80
         restart: always
         tty: true
         volumes:
             - ./phpmyadmin-sessions:/sessions
 networks:
-    pub_net:
-        external: true
+    mysql:
+        driver: bridge

@@ -1,31 +1,21 @@
-# Create Docker Network
-
-# docker network create \
-#     --driver macvlan \
-#     --subnet 10.0.0.0/8 \
-#     --gateway 10.0.0.1  \
-#     --opt parent enp0s31f6 \
-#     pub_net
-
 version: "3"
 services:
     neo4j:
         container_name: dc-neo4j
-        expose:
-            - "7474"
-            - "7687"
-        image: neo4j:latest@sha256:7a97d0b11331d793e0d49e12cb847eded3db9044c856d80fa70daab5fd221c2f
+        image: neo4j:latest
         networks:
-            pub_net:
-                ipv4_address: 10.0.30.200
+            - neo4j
+        ports:
+            - 7474:7474
+            - 7687:7687
         restart: always
         tty: true
-        volumes:
-            - ./neo4j-conf:/conf
-            - ./neo4j-data:/data
-            - ./neo4j-logs:/logs
-            - ./neo4j-plugins:/plugins
-            - ./neo4j-ssl:/ssl
+        # volumes:
+        #     - ./neo4j-conf:/conf
+        #     - ./neo4j-data:/data
+        #     - ./neo4j-logs:/logs
+        #     - ./neo4j-plugins:/plugins
+        #     - ./neo4j-ssl:/ssl
 networks:
-    pub_net:
-        external: true
+    neo4j:
+        driver: bridge
