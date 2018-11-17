@@ -75,7 +75,7 @@ services:
         container_name: dc-sentry-redis
         expose:
             - '6379'
-        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
+        image: redis:latest@sha256:19f4621c085cb7df955f30616e7bf573e508924cff515027c1dd041f152bb1b6
         networks:
             - sentry
         restart: always
