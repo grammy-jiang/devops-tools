@@ -16,7 +16,7 @@ version: '3'
 services:
     gitlab:
         container_name: dc-gitlab
-        image: gitlab/gitlab-ce:latest@sha256:194d10fcb9421517ce739fb837d8b015bb9154969466e62b0ab057264f063f58
+        image: gitlab/gitlab-ce:latest@sha256:7b4c96abe9f068615fcab1f5a658fb1d34a01b6905398c447287aac1a5663c65
         environment:
             GITLAB_ROOT_PASSWORD: xxxx
             GITLAB_OMNIBUS_CONFIG: |
