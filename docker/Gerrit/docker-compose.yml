@@ -1,0 +1,27 @@
+version: '3'
+services:
+  gerrit:
+    container_name: dc-gerrit
+    image: gerritcodereview/gerrit
+    networks:
+      - gerrit
+    ports:
+      - "29418:29418"
+      - "8080:8080"
+    restart: always
+    tty: true
+    volumes:
+      - git-volume:/var/gerrit/git
+      - db-volume:/var/gerrit/db
+      - index-volume:/var/gerrit/index
+      - cache-volume:/var/gerrit/cache
+
+volumes:
+  git-volume:
+  db-volume:
+  index-volume:
+  cache-volume:
+
+networks:
+  gerrit:
+    driver: bridge
