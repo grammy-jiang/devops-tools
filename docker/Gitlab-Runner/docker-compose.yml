@@ -1,0 +1,16 @@
+version: '3'
+services:
+  gitlab-runner:
+    container_name: dc-gitlab-runner
+    image: gitlab/gitlab-runner:latest
+    networks:
+      - nw-gitlab-runner
+    restart: always
+    tty: true
+    volumes:
+      - ./gitlab-runner-config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  nw-gitlab-runner:
+    driver: bridge
