@@ -31,6 +31,8 @@ services:
             - 80:80
         restart: always
         tty: true
+        volumes:
+          - ./pgadmin4-pgadmin:/var/lib/pgadmin
 networks:
     postgres:
         driver: bridge
