@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jupyter:
+    container_name: dc-jupyter
+    image: jupyter/all-spark-notebook:latest
+    networks:
+      - nw-jupyter
+    ports:
+      - '8888:8888'
+    restart: always
+    tty: true
+    volumes:
+      - "./jupyter-work:/home/jovyan/work"
+
+networks:
+  nw-jupyter:
+    driver: bridge
