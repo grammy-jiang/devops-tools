@@ -6,9 +6,9 @@ services:
             POSTGRES_USER: user
             POSTGRES_PASSWORD: xxxx
             POSTGRES_DB: user_db
-        image: postgres:latest
+        image: postgres:alpine
         networks:
-            - postgres
+            - nw-postgres
         ports:
             - 5432:5432
         restart: always
@@ -26,7 +26,7 @@ services:
         links:
             - postgres
         networks:
-            - postgres
+            - nw-postgres
         ports:
             - 80:80
         restart: always
@@ -34,6 +34,6 @@ services:
         volumes:
           - ./pgadmin4-pgadmin:/var/lib/pgadmin
 networks:
-    postgres:
+    nw-postgres:
         driver: bridge
 
