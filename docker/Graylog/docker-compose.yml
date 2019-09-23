@@ -1,0 +1,62 @@
+version: "3"
+services:
+  # MongoDB: https://hub.docker.com/_/mongo/
+  mongo:
+    container_name: dc-graylog-mongo
+    image: mongo:latest
+    networks:
+      - nw-graylog
+    restart: always
+    tty: true
+    volumes:
+      - "./mongo-data:/data/db"
+  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
+  elasticsearch:
+    container_name: dc-graylog-elasticsearch
+    environment:
+      http.host: "0.0.0.0"
+      transport.host: "localhost"
+      network.host: "0.0.0.0"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    # image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.3
+    networks:
+      - nw-graylog
+    restart: always
+    tty: true
+    # volumes:
+    #   - es_data:/usr/share/elasticsearch/data
+  # Graylog: https://hub.docker.com/r/graylog/graylog/
+  graylog:
+    depends_on:
+      - mongo
+      - elasticsearch
+    environment:
+      # CHANGE ME (must be at least 16 characters)!
+      GRAYLOG_PASSWORD_SECRET: "somepasswordpepper"
+      # Password: admin
+      GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+      GRAYLOG_HTTP_EXTERNAL_URI: "http://127.0.0.1:9000/"
+    image: graylog/graylog:3.1
+    links:
+      - mongo
+      - elasticsearch
+    networks:
+      - nw-graylog
+    ports:
+      # Graylog web interface and REST API
+      - 9000:9000
+      # Syslog TCP, Syslog UDP
+      - 514:514
+      - 514:514/udp
+      # GELF TCP, GELF UDP
+      - 12201:12201
+      - 12201:12201/udp
+    restart: always
+    tty: true
+    # volumes:
+    #   - graylog_journal:/usr/share/graylog/data/journal
+
+networks:
+  nw-graylog:
+    driver: bridge
