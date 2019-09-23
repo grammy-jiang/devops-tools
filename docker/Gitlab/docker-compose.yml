@@ -1,34 +1,18 @@
-# Create Docker Network
-
-# docker network create \
-#     --driver macvlan \
-#     --subnet 10.0.0.0/8 \
-#     --gateway 10.0.0.1  \
-#     --opt parent enp0s31f6 \
-#     pub_net
-
-# https://docs.gitlab.com/omnibus/docker/README.html
-# Use the following command to edit gitlab.rb:
-# sudo docker exec -it dc-gitlab vi /etc/gitlab/gitlab.rb
-# sudo docker exec -it dc-gitlab gitlab-ctl reconfigure
-
 version: '3'
 services:
     gitlab:
         container_name: dc-gitlab
         image: gitlab/gitlab-ce:latest
         environment:
-            GITLAB_ROOT_PASSWORD: xxxx
+            # GITLAB_ROOT_PASSWORD: xxxxxxxx
             GITLAB_OMNIBUS_CONFIG: |
-                external_url 'http://10.0.20.0'
-        expose:
-            - '22'
-            - '80'
-            - '433'
-        hostname: 10.0.20.0
+                external_url 'http://gitlab'
         networks:
-            pub_net:
-                ipv4_address: 10.0.20.0
+            - nw-gitlab
+        ports:
+            - '80:80'
+            - '443:443'
+            - '22:22'
         restart: always
         tty: true
         volumes:
@@ -36,5 +20,5 @@ services:
             - ./gitlab-log:/var/log/gitlab
             - ./gitlab-config:/etc/gitlab
 networks:
-    pub_net:
-        external: true
+    nw-gitlab:
+      driver: bridge
