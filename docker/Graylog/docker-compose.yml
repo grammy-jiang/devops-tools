@@ -9,8 +9,8 @@ services:
     restart: always
     tty: true
     volumes:
-      - "./mongo-data:/data/db"
-  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/5.6/docker.html
+      - "./mongo-db:/data/db"
+  # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/6.x/docker.html
   elasticsearch:
     container_name: dc-graylog-elasticsearch
     environment:
@@ -18,16 +18,16 @@ services:
       transport.host: "localhost"
       network.host: "0.0.0.0"
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
-    # image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.1
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.8.3
     networks:
       - nw-graylog
     restart: always
     tty: true
-    # volumes:
-    #   - es_data:/usr/share/elasticsearch/data
+    volumes:
+      - "./es-data:/usr/share/elasticsearch/data"
   # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
+    container_name: dc-graylog
     depends_on:
       - mongo
       - elasticsearch
@@ -45,17 +45,17 @@ services:
       - nw-graylog
     ports:
       # Graylog web interface and REST API
-      - 9000:9000
+      - "9000:9000"
       # Syslog TCP, Syslog UDP
-      - 514:514
-      - 514:514/udp
+      - "514:514"
+      - "514:514/udp"
       # GELF TCP, GELF UDP
-      - 12201:12201
-      - 12201:12201/udp
+      - "12201:12201"
+      - "12201:12201/udp"
     restart: always
     tty: true
-    # volumes:
-    #   - graylog_journal:/usr/share/graylog/data/journal
+    volumes:
+      - "./graylog-journal:/usr/share/graylog/data/journal"
 
 networks:
   nw-graylog:
