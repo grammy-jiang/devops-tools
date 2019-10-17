@@ -89,7 +89,7 @@ services:
         environment:
             POSTGRES_USER: sentry
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
+        image: postgres:latest@sha256:09bd0ac7787ee9a1c8c53d9839af843e812ccca527cecc82d2c2e17d54af1a0d
         networks:
             - sentry
         restart: always
