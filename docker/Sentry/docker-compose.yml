@@ -23,8 +23,8 @@ services:
         restart: always
         tty: true
         volumes:
-            - ./sentry-files:/var/lib/sentry/files
-            - ./sentry-sentry:/etc/sentry
+            - ./data-sentry-files:/var/lib/sentry/files
+            - ./data-sentry-sentry:/etc/sentry
     sentry-cron:
         command: run cron
         container_name: dc-sentry-cron
@@ -47,7 +47,7 @@ services:
         restart: always
         tty: true
         volumes:
-            - ./sentry-sentry:/etc/sentry
+            - ./data-sentry-sentry:/etc/sentry
     sentry-worker:
         command: run worker
         container_name: dc-sentry-worker
@@ -70,7 +70,7 @@ services:
         restart: always
         tty: true
         volumes:
-            - ./sentry-sentry:/etc/sentry
+            - ./data-sentry-sentry:/etc/sentry
     redis:
         container_name: dc-sentry-redis
         expose:
