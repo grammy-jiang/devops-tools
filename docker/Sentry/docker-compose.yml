@@ -75,13 +75,13 @@ services:
         container_name: dc-sentry-redis
         expose:
             - '6379'
-        image: redis:latest@sha256:6b9f935e89af002225c0dcdadf1fd74245b4cc1e3e91222f7e4769c236cf80d4
+        image: redis:alpine
         networks:
             - sentry
         restart: always
         tty: true
         volumes:
-            - ./redis-data:/data
+            - ./data-redis:/data
     postgres:
         container_name: dc-sentry-postgres
         expose:
@@ -89,13 +89,13 @@ services:
         environment:
             POSTGRES_USER: sentry
             POSTGRES_PASSWORD: xxxx
-        image: postgres:latest@sha256:d5787305ec0a3b9a24d0108cb5fdbb4befbd809f85639bf04aa1941138df9701
+        image: postgres:alpine
         networks:
             - sentry
         restart: always
         tty: true
         volumes:
-            - ./postgres-data:/var/lib/postgresql/data
+            - ./data-postgres:/var/lib/postgresql/data
 networks:
     sentry:
         driver: bridge
