@@ -4,7 +4,7 @@ services:
         container_name: dc-mysql
         environment:
             MYSQL_ROOT_PASSWORD: xxxx
-        image: mysql:5.6
+        image: mysql:5.7
         networks:
             - mysql
         ports:
